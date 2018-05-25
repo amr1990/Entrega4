@@ -20,4 +20,8 @@ public class Circle extends Figure{
     public double getRadius(){
         return this.radius;
     }
+    
+    public void accept(FigureVisitor figureVisitor){
+        figureVisitor.visit(this);
+    }
 }

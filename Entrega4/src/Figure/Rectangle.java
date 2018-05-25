@@ -26,4 +26,8 @@ public class Rectangle extends Figure{
     public double getHeight(){
         return this.height;
     }
+    
+    public void accept(FigureVisitor figureVisitor){
+        figureVisitor.visit(this);
+    }
 }

@@ -23,4 +23,8 @@ public class Drawing extends Figure{
     public List<Figure> getComponents(){
         return unmodifiableList(this.components);
     }
+    
+    public void accept(FigureVisitor figureVisitor){
+        figureVisitor.visit(this);
+    }
 }

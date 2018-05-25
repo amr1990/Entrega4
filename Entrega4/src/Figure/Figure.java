@@ -25,4 +25,6 @@ public abstract class Figure {
     public double getY(){
         return this.y;
     }
+    
+    public abstract void accept(FigureVisitor figureVisitor);
 }
