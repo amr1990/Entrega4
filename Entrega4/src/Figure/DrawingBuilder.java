@@ -5,7 +5,7 @@
  */
 package Figure;
 
-import static java.util.Collections.unmodifiableList;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -13,7 +13,7 @@ import java.util.List;
  * @author Albert
  */
 public class DrawingBuilder {
-    private List<Figure> components;
+    private List<Figure> components = new ArrayList<>();
     private double x;
     private double y;
     
@@ -28,6 +28,6 @@ public class DrawingBuilder {
     }
     
     public Drawing build(){
-        return new Drawing(x, y, unmodifiableList(components));
+        return new Drawing(x, y, components);
     }
 }

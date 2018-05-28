@@ -12,13 +12,11 @@ import java.util.Iterator;
  * @author Albert
  */
 public class AreaDoubler implements FigureVisitor{
-    private Rectangle r;
-    private Circle c;
-    private Drawing d;
+    private Figure f;
 
     @Override
     public void visit(Rectangle rectangle) {
-        r =  new Rectangle(rectangle.getX(), 
+        f =  new Rectangle(rectangle.getX(), 
                            rectangle.getY(), 
                            rectangle.getWidth() * Math.sqrt(2.0), 
                            rectangle.getHeight() * Math.sqrt(2.0));
@@ -26,9 +24,9 @@ public class AreaDoubler implements FigureVisitor{
 
     @Override
     public void visit(Circle circle) {
-        c = new Circle(circle.getX(),
+        f = new Circle(circle.getX(),
                        circle.getY(),
-                       circle.getRadius());
+                       circle.getRadius() * Math.sqrt(2.0));
     }
 
     @Override
@@ -37,11 +35,16 @@ public class AreaDoubler implements FigureVisitor{
         Iterator<Figure> drawingIterator = drawing.getComponents().iterator();
         
         while(drawingIterator.hasNext()){
-            Figure f = drawingIterator.next();
-            f.accept(this);
-            db.addFigure(f);
+            AreaDoubler ad = new AreaDoubler();
+            Figure figure = drawingIterator.next();
+            figure.accept(ad);
+            db.addFigure(ad.getDoubledFigure());
         }
-        d = db.build();
+        f = db.build();
+    }
+    
+    public Figure getDoubledFigure(){
+        return f;
     }
     
 }
