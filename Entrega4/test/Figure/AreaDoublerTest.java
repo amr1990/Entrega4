@@ -31,6 +31,7 @@ public class AreaDoublerTest {
         Circle doubledCircle = (Circle) ad.getDoubledFigure();
         double d1 = getCircleArea(doubledCircle);
         assertEquals(2*d, d1, 0.00000000001);
+        assertNotEquals(c, doubledCircle);
     }
     
     @Test
@@ -41,6 +42,7 @@ public class AreaDoublerTest {
         Rectangle doubledRectangle = (Rectangle) ad.getDoubledFigure();
         double doubledArea = getRectangleArea(doubledRectangle);
         assertEquals(2*area, doubledArea, 0.00000000001);
+        assertNotSame(r, doubledRectangle);
     }
     
     @Test
@@ -54,6 +56,7 @@ public class AreaDoublerTest {
         Rectangle newRectangle = (Rectangle) newDrawing.getComponents().get(1);
         assertEquals(getRectangleArea(r) * 2, getRectangleArea(newRectangle), 0.00000000001);
         assertEquals(getCircleArea(c) * 2, getCircleArea(newCircle), 0.00000000001);
+        assertNotSame(d, newDrawing);
     }
     
     private double getRectangleArea(Rectangle r){
